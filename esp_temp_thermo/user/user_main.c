@@ -26,9 +26,9 @@ LOCAL void print_console(char * arg)
 
 void print_data(uint8 temp, uint8 hum)
 {
-	//char data[30];
+	char data[30]={0};
 	os_printf("T=%d\tHU=%d%%\r\n",temp,hum);
-	//print_console(data);
+	print_console(data);
 }
 
 void delay_ms(uint16 ms)
@@ -135,7 +135,7 @@ static os_timer_t xticker;
 static void xticker_irq(void * arg)
 {
 	uint8 temp, hum;
-	os_printf("OS=%s\r\n",system_get_sdk_version());
+	dht11_read(&temp,&hum);
 	print_data(temp,hum);
 }
 
@@ -164,7 +164,7 @@ user_init()
 
     /* setup layers */
     tick_start();
-    //dht11_setup();
+    dht11_setup();
     //relay_init();
 
 	/* Disarm ticker */
