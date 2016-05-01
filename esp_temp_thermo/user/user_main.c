@@ -10,6 +10,7 @@
 #include "user_interface.h"
 #include "wifi_client.h"
 #include "os_tick.h"
+#include "config.h"
 
 #define user_procTaskPrio        0
 #define user_procTaskQueueLen    1
@@ -176,8 +177,8 @@ user_init()
 
 
     //wifi_set_sleep_type
-    wifi_set_parameter(WIFI_SSID,(void *)"horizons");
-    wifi_set_parameter(WIFI_PASSWORD,(void *)"mamaare25mere");
+    wifi_set_parameter(WIFI_SSID,(void *)WIFI_AP);
+    wifi_set_parameter(WIFI_PASSWORD,(void *)WIFI_PASS);
     wifi_start();
 
     /* work the wifi system */
